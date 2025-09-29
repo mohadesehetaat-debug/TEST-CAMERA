@@ -3,106 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <title>نقشه فاز ۱ - پارک نهج‌البلاغه</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    body {
-      background-color: #f4f7fa;
-      font-family: 'Segoe UI', sans-serif;
-      direction: rtl;
-    }
-    .map-container {
-      position: relative;
-      width: 100%;
-      max-width: 1200px;
-      height: 700px;
-      margin: 40px auto;
-      border: 2px solid #ccc;
-      background-color: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    .node {
-      position: absolute;
-      width: 120px;
-      height: 60px;
-      background-color: #e3ecf3;
-      border: 2px solid #4a90e2;
-      border-radius: 10px;
-      text-align: center;
-      padding: 8px;
-      font-size: 14px;
-      color: #333;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .node i {
-      display: block;
-      font-size: 20px;
-      margin-bottom: 4px;
-      color: #4a90e2;
-    }
-    .arrow {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      border: 2px solid transparent;
-    }
-    svg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 0;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <h1>📡 نقشه فاز ۱ - پارک نهج‌البلاغه</h1>
   <div class="map-container">
-    <!-- پایگاه‌ها و آنتن‌ها -->
-    <div class="node" style="top: 500px; left: 100px;">
-      <i class="fas fa-building"></i>
-      AP1GM<br>کانکس شهرداری
-    </div>
-    <div class="node" style="top: 100px; left: 800px;">
-      <i class="fas fa-tower-broadcast"></i>
-      AP3GMT<br>همیلا ۱
-    </div>
-    <div class="node" style="top: 50px; left: 950px;">
-      <i class="fas fa-satellite-dish"></i>
-      AP4HTO<br>به سمت ایوانک
-    </div>
-    <div class="node" style="top: 150px; left: 950px;">
-      <i class="fas fa-satellite-dish"></i>
-      AP5HO<br>به سمت همیلا ۳
-    </div>
-    <div class="node" style="top: 200px; left: 1100px;">
-      <i class="fas fa-tower-broadcast"></i>
-      AP6HO1<br>همیلا ۳
-    </div>
-    <div class="node" style="top: 300px; left: 950px;">
-      <i class="fas fa-tower-broadcast"></i>
-      AP7ZE<br>همیلا ۲
-    </div>
-    <div class="node" style="top: 20px; left: 1100px;">
-      <i class="fas fa-building"></i>
-      AP3H<br>ایوانک
-    </div>
+    <!-- کانکس شهرداری -->
+    <div class="node ap" id="AP1GM">AP1GM<br><span>کانکس شهرداری</span></div>
+
+    <!-- همیلا ۱ -->
+    <div class="node tower" id="AP3GMT">AP3GMT<br><span>دکل همیلا ۱</span></div>
+
+    <!-- ایوانک -->
+    <div class="node tower" id="AP3H">AP3H<br><span>ایوانک</span></div>
+
+    <!-- همیلا ۳ -->
+    <div class="node tower" id="AP6HO1">AP6HO1<br><span>دکل همیلا ۳</span></div>
+
+    <!-- همیلا ۲ -->
+    <div class="node tower" id="AP7ZE">AP7ZE<br><span>دکل همیلا ۲</span></div>
+
+    <!-- آنتن‌های پوینت تو پوینت -->
+    <div class="node antenna" id="AP4HTO">AP4HTO<br><span>PTP به ایوانک</span></div>
+    <div class="node antenna" id="AP5HO">AP5HO<br><span>PTP به همیلا ۳</span></div>
 
     <!-- فلش‌های انتقال داده -->
-    <svg width="1200" height="700">
-      <!-- AP1GM → AP3GMT -->
-      <line x1="160" y1="530" x2="860" y2="130" stroke="#ff6f61" stroke-width="3" marker-end="url(#arrowhead)" />
-      <!-- AP4HTO → AP3H -->
-      <line x1="1010" y1="80" x2="1150" y2="40" stroke="#4caf50" stroke-width="3" marker-end="url(#arrowhead)" />
-      <!-- AP5HO → AP6HO1 -->
-      <line x1="1010" y1="180" x2="1120" y2="230" stroke="#2196f3" stroke-width="3" marker-end="url(#arrowhead)" />
-      <!-- AP6HO1 → AP7ZE -->
-      <line x1="1120" y1="230" x2="1010" y2="330" stroke="#9c27b0" stroke-width="3" marker-end="url(#arrowhead)" />
-    </svg>
-    <svg width="0" height="0">
+    <svg class="arrows">
       <defs>
-        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-          <polygon points="0 0, 10 3.5, 0 7" fill="black" />
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="orange" />
         </marker>
       </defs>
+      <line x1="100" y1="100" x2="300" y2="100" class="arrow" />
+      <line x1="300" y1="100" x2="400" y2="200" class="arrow" />
+      <line x1="300" y1="100" x2="400" y2="50" class="arrow" />
+      <line x1="400" y1="50" x2="500" y2="150" class="arrow" />
+      <line x1="500" y1="150" x2="600" y2="100" class="arrow" />
     </svg>
   </div>
 </body>
