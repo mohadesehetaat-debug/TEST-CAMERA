@@ -3,43 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <title>نقشه فاز ۱ - پارک نهج‌البلاغه</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Vazir', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      direction: rtl;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #005b96;
+      margin-bottom: 40px;
+    }
+
+    .network-map {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .node {
+      background-color: #fff;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      padding: 15px 20px;
+      width: 180px;
+      text-align: center;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .node small {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .ap {
+      border-color: #339af0;
+      background-color: #e7f3ff;
+    }
+
+    .tower {
+      border-color: #6c757d;
+      background-color: #f1f1f1;
+    }
+
+    .antenna {
+      border-color: #ffc107;
+      background-color: #fff8e1;
+    }
+
+    .arrow {
+      font-size: 24px;
+      color: orange;
+    }
+
+    .sub-links {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+  </style>
 </head>
 <body>
   <h1>📡 نقشه فاز ۱ - پارک نهج‌البلاغه</h1>
-  <div class="map-container">
-    <!-- کانکس شهرداری -->
-    <div class="node ap" id="AP1GM">AP1GM<br><span>کانکس شهرداری</span></div>
+  <div class="network-map">
+    <div class="node ap" id="AP1GM">AP1GM<br><small>کانکس شهرداری</small></div>
+    <div class="arrow">➜</div>
+    <div class="node tower" id="AP3GMT">AP3GMT<br><small>دکل همیلا ۱</small></div>
 
-    <!-- همیلا ۱ -->
-    <div class="node tower" id="AP3GMT">AP3GMT<br><span>دکل همیلا ۱</span></div>
+    <div class="sub-links">
+      <div class="node antenna" id="AP4HTO">AP4HTO<br><small>به ایوانک</small></div>
+      <div class="arrow">➜</div>
+      <div class="node tower" id="AP3H">AP3H<br><small>ایوانک</small></div>
+    </div>
 
-    <!-- ایوانک -->
-    <div class="node tower" id="AP3H">AP3H<br><span>ایوانک</span></div>
-
-    <!-- همیلا ۳ -->
-    <div class="node tower" id="AP6HO1">AP6HO1<br><span>دکل همیلا ۳</span></div>
-
-    <!-- همیلا ۲ -->
-    <div class="node tower" id="AP7ZE">AP7ZE<br><span>دکل همیلا ۲</span></div>
-
-    <!-- آنتن‌های پوینت تو پوینت -->
-    <div class="node antenna" id="AP4HTO">AP4HTO<br><span>PTP به ایوانک</span></div>
-    <div class="node antenna" id="AP5HO">AP5HO<br><span>PTP به همیلا ۳</span></div>
-
-    <!-- فلش‌های انتقال داده -->
-    <svg class="arrows">
-      <defs>
-        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
-          <polygon points="0 0, 10 3.5, 0 7" fill="orange" />
-        </marker>
-      </defs>
-      <line x1="100" y1="100" x2="300" y2="100" class="arrow" />
-      <line x1="300" y1="100" x2="400" y2="200" class="arrow" />
-      <line x1="300" y1="100" x2="400" y2="50" class="arrow" />
-      <line x1="400" y1="50" x2="500" y2="150" class="arrow" />
-      <line x1="500" y1="150" x2="600" y2="100" class="arrow" />
-    </svg>
+    <div class="sub-links">
+      <div class="node antenna" id="AP5HO">AP5HO<br><small>به همیلا ۳</small></div>
+      <div class="arrow">➜</div>
+      <div class="node tower" id="AP6HO1">AP6HO1<br><small>دکل همیلا ۳</small></div>
+      <div class="arrow">➜</div>
+      <div class="node tower" id="AP7ZE">AP7ZE<br><small>دکل همیلا ۲</small></div>
+    </div>
   </div>
 </body>
 </html>
