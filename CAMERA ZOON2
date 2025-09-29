@@ -2,92 +2,122 @@
 <html lang="fa">
 <head>
   <meta charset="UTF-8">
-  <title>نقشه فاز ۱ - پارک نهج‌البلاغه</title>
+  <title>نقشه شبکه پارک نهج‌البلاغه - فاز ۱</title>
   <style>
     body {
       font-family: 'Vazir', sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
+      background-color: #f4f6f8;
       direction: rtl;
-      padding: 30px;
+      margin: 0;
+      padding: 20px;
     }
 
     h1 {
       text-align: center;
       color: #005b96;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
     }
 
-    .network-map {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 30px;
+    .map {
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      height: 700px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      overflow: hidden;
     }
 
     .node {
-      background-color: #fff;
-      border: 2px solid #ccc;
-      border-radius: 10px;
-      padding: 15px 20px;
-      width: 180px;
+      position: absolute;
+      width: 140px;
+      padding: 10px;
+      border-radius: 8px;
       text-align: center;
       font-weight: bold;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      background-color: #fff;
+      border: 2px solid #ccc;
+      font-size: 14px;
     }
 
-    .node small {
-      font-size: 12px;
-      color: #666;
+    .node .icon {
+      font-size: 22px;
+      margin-bottom: 4px;
     }
 
-    .ap {
-      border-color: #339af0;
-      background-color: #e7f3ff;
-    }
+    .ap { border-color: #339af0; background-color: #e7f3ff; }
+    .tower { border-color: #6c757d; background-color: #f1f1f1; }
+    .antenna { border-color: #ffc107; background-color: #fff8e1; }
+    .device { border-color: #28a745; background-color: #e6ffe6; }
 
-    .tower {
-      border-color: #6c757d;
-      background-color: #f1f1f1;
-    }
+    /* موقعیت‌ها بر اساس نقشه */
+    #AP15M { top: 60px; left: 100px; }
+    #AP36MT { top: 60px; left: 300px; }
+    #AP41H { top: 200px; left: 300px; }
+    #AP31H { top: 340px; left: 300px; }
+    #AP54H { top: 340px; left: 500px; }
+    #AP54H1 { top: 200px; left: 500px; }
+    #APPEE { top: 200px; left: 700px; }
 
-    .antenna {
-      border-color: #ffc107;
-      background-color: #fff8e1;
-    }
+    /* دستگاه‌ها */
+    #mobile { top: 400px; left: 700px; }
+    #laptop { top: 500px; left: 700px; }
 
+    /* فلش‌ها */
     .arrow {
-      font-size: 24px;
-      color: orange;
+      position: absolute;
+      width: 2px;
+      background-color: #ff5722;
+      transform-origin: top left;
     }
 
-    .sub-links {
-      display: flex;
-      align-items: center;
-      gap: 15px;
+    .arrow::after {
+      content: "➤";
+      position: absolute;
+      top: -10px;
+      left: -6px;
+      font-size: 18px;
+      color: #ff5722;
     }
+
+    /* مسیرهای انتقال داده */
+    .arrow1 { top: 80px; left: 140px; height: 60px; transform: rotate(0deg); }
+    .arrow2 { top: 100px; left: 320px; height: 100px; transform: rotate(90deg); }
+    .arrow3 { top: 240px; left: 320px; height: 100px; transform: rotate(90deg); }
+    .arrow4 { top: 360px; left: 340px; height: 60px; transform: rotate(0deg); }
+    .arrow5 { top: 240px; left: 520px; height: 100px; transform: rotate(90deg); }
+    .arrow6 { top: 220px; left: 540px; height: 60px; transform: rotate(0deg); }
+    .arrow7 { top: 220px; left: 740px; height: 100px; transform: rotate(90deg); }
+
   </style>
 </head>
 <body>
-  <h1>📡 نقشه فاز ۱ - پارک نهج‌البلاغه</h1>
-  <div class="network-map">
-    <div class="node ap" id="AP1GM">AP1GM<br><small>کانکس شهرداری</small></div>
-    <div class="arrow">➜</div>
-    <div class="node tower" id="AP3GMT">AP3GMT<br><small>دکل همیلا ۱</small></div>
+  <h1>📡 نقشه شبکه پارک نهج‌البلاغه - فاز ۱</h1>
+  <div class="map">
+    <!-- پایگاه‌ها -->
+    <div class="node ap" id="AP15M"><div class="icon">🏠</div>AP15M</div>
+    <div class="node tower" id="AP36MT"><div class="icon">📡</div>AP36MT</div>
+    <div class="node antenna" id="AP41H"><div class="icon">📶</div>AP41H</div>
+    <div class="node antenna" id="AP31H"><div class="icon">📶</div>AP31H</div>
+    <div class="node antenna" id="AP54H"><div class="icon">📶</div>AP54H</div>
+    <div class="node antenna" id="AP54H1"><div class="icon">📶</div>AP54H1</div>
+    <div class="node tower" id="APPEE"><div class="icon">📡</div>APPEE</div>
 
-    <div class="sub-links">
-      <div class="node antenna" id="AP4HTO">AP4HTO<br><small>به ایوانک</small></div>
-      <div class="arrow">➜</div>
-      <div class="node tower" id="AP3H">AP3H<br><small>ایوانک</small></div>
-    </div>
+    <!-- دستگاه‌ها -->
+    <div class="node device" id="mobile"><div class="icon">📱</div>موبایل</div>
+    <div class="node device" id="laptop"><div class="icon">💻</div>لپ‌تاپ</div>
 
-    <div class="sub-links">
-      <div class="node antenna" id="AP5HO">AP5HO<br><small>به همیلا ۳</small></div>
-      <div class="arrow">➜</div>
-      <div class="node tower" id="AP6HO1">AP6HO1<br><small>دکل همیلا ۳</small></div>
-      <div class="arrow">➜</div>
-      <div class="node tower" id="AP7ZE">AP7ZE<br><small>دکل همیلا ۲</small></div>
-    </div>
+    <!-- فلش‌های انتقال داده -->
+    <div class="arrow arrow1"></div>
+    <div class="arrow arrow2"></div>
+    <div class="arrow arrow3"></div>
+    <div class="arrow arrow4"></div>
+    <div class="arrow arrow5"></div>
+    <div class="arrow arrow6"></div>
+    <div class="arrow arrow7"></div>
   </div>
 </body>
 </html>
